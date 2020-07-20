@@ -75,7 +75,6 @@ def group_by_year(movies):
 
     # print(years)
 grouped_data = group_by_year(scrapped_movies)
-<<<<<<< HEAD
 # pprint.pprint(grouped_data)
 
 
@@ -109,10 +108,3 @@ def group_by_decades(movies):
     return movies_decades
 decade = group_by_decades(grouped_data)
 pprint.pprint(decade)
-=======
-
-
-def group_by_decades(movies):
-    
-group_by_decades(grouped_data)
->>>>>>> 0814be1a82c05070138576a84565b0e48b3ae5e0
