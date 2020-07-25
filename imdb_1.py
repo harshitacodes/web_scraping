@@ -55,5 +55,9 @@ def scrape_top_list():
             All_movies.append(details.copy())
 
     return All_movies
+    # return movies_url
 
-pprint.pprint(scrape_top_list())
+# pprint.pprint(scrape_top_list())
+scrapped_movies = scrape_top_list()
+# pprint.pprint(scrape[1])
+# scrape_top_list()
