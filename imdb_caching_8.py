@@ -7,8 +7,6 @@ def scrape_movie_details(movie_url):
 
     id_movie = ''
     for id_s in movie_url[27:]:
-        # print(ids,count)
-        # count+=1
         if '/' not in id_s:
             id_movie += id_s
         else:
@@ -34,6 +32,17 @@ def scrape_movie_details(movie_url):
         else:
             break
     sub_div = soup.find('div', class_ = "subtext")
+
+    run_time = sub_div.find('time').get_text().strip()
+    runTime_hours = int(run_time[0]) * 60
+    movie_runtime = 0
+    if 'min' in run_time:
+        runtime_min = int(run_time[3:].strip('min'))  
+        movie_runtime = runTime_hours + runtime_min
+    else:
+        movie_runtime = runTime_hours 
+
+
     genre = sub_div.find_all('a')
     genre.pop()
     movie_genre = [i.get_text() for i in genre]
@@ -60,22 +69,18 @@ def scrape_movie_details(movie_url):
                 country_tag = divs.find_all('a')
                 movie_country = ''.join([Country.get_text() for Country in country_tag])
 
-            elif 'Runtime:' in h4:
-                runtime = divs.find_all('time')
-                runtime_movie = ''.join([Runtime.get_text() for Runtime in runtime])
-
 
     poster_div_tag = soup.find('div',class_ = "poster").a['href']
 
     poster_link = "https://www.imdb.com/" + poster_div_tag
 
 
-    movie_data_dic = {'name':'', 'director':'','country':'','runtime':'','genre':'','language':'','bio':'','poster_link':''}
+    movie_data_dic = {}
 
     movie_data_dic['name'] = movie_name
     movie_data_dic['country'] = movie_country
     movie_data_dic['director'] = movie_directors
-    movie_data_dic['runtime'] = runtime_movie
+    movie_data_dic['runtime'] = movie_runtime
     movie_data_dic['genre'] = movie_genre
     movie_data_dic['language'] = movie_language
     movie_data_dic['bio'] = movie_bio
@@ -90,7 +95,19 @@ def scrape_movie_details(movie_url):
 
     return movie_data_dic
 
-url1 = scrapped_movies[-1]['url']
 
-whole_details = scrape_movie_details(url1)
-print(whole_details)
+def get_movie_list_details(movies):
+    
+    scrapped_movies = scrape_top_list()
+    movie_list = []
+    for i in scrapped_movies:
+
+        Url = scrape_movie_details(i['url'])
+        movie_list.append(Url)
+    return (movie_list)
+(get_movie_list_details(scrape_top_list))
+
+# url1 = scrapped_movies[2]['url']
+
+# whole_details = scrape_movie_details(url1)
+# print(whole_details)

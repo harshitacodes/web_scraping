@@ -44,7 +44,7 @@ def scrape_top_list():
         
 
         All_movies = []
-        details = {'position':'','name':'','years':'','rating':'','url':''}
+        details = {}
         for i in range(0,len(movies_ranks)):
             details['position'] = int(movies_ranks[i])
             details['name'] = str(movies_name[i])
@@ -55,9 +55,6 @@ def scrape_top_list():
             All_movies.append(details.copy())
 
     return All_movies
-    # return movies_url
 
 # pprint.pprint(scrape_top_list())
 scrapped_movies = scrape_top_list()
-# pprint.pprint(scrape[1])
-# scrape_top_list()

@@ -1,6 +1,6 @@
-from imdb_movie_details import *
-from imdb import *
-from imdb_full_movie_list import *
+from imdb_movie_details_4 import *
+from imdb_1 import *
+from imdb_full_movie_list_5 import *
 
 
 def analyse_movies_directors(movies):
@@ -26,4 +26,4 @@ def analyse_movies_directors(movies):
     
 movies_detail = get_movie_list_details(scrapped_movies[:10])
 
-pprint.pprint(analyse_movies_directors(movies_detail))
+print(analyse_movies_directors(movies_detail))

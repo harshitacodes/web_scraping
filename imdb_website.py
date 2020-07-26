@@ -44,7 +44,7 @@ def scrape_top_list():
         
 
         All_movies = []
-        details = {'position':'','name':'','year':'','rating':'','url':''}
+        details = {}
         for i in range(0,len(movies_ranks)):
             details['position'] = int(movies_ranks[i])
             details['name'] = str(movies_name[i])
@@ -161,7 +161,7 @@ def scrape_movie_details(movie_url):
     poster_link = "https://www.imdb.com/" + poster_div_tag
 
 
-    movie_data_dic = {'name':'', 'director':'','country':'','runtime':'','genre':'','language':'','bio':'','poster_link':''}
+    movie_data_dic = {}
 
     movie_data_dic['name'] = movie_name
     movie_data_dic['country'] = movie_country

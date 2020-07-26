@@ -74,4 +74,4 @@ def group_by_year(movies):
     return movies_dict_data
 
     # print(years)
-pprint.pprint(group_by_year(scrapped_movies))
+group_by_year(scrapped_movies)
