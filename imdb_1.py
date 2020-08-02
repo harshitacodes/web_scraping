@@ -56,5 +56,6 @@ def scrape_top_list():
 
     return All_movies
 
-# pprint.pprint(scrape_top_list())
+
 scrapped_movies = scrape_top_list()
+# pprint.pprint(scrapped_movies)

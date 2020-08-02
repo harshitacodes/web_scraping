@@ -4,9 +4,8 @@ from imdb_full_movie_list_5 import *
 
 
 def analyse_movies_directors(movies):
-    scrapped_movies = scrape_top_list()
     directorss = {}
-    for dic in movies_detail:
+    for dic in movies:
         directr = dic['director']
         if 1 < len(directr):
             for i in directr:
@@ -19,11 +18,13 @@ def analyse_movies_directors(movies):
                 directorss[directr[0]] = 1
             else:
                 directorss[directr[0]] += 1
-
+    
     return directorss
         
+
+for i in 
         
     
-movies_detail = get_movie_list_details(scrapped_movies[:10])
+# movies_detail = get_movie_list_details(scrapped_movies[:10])
 
-print(analyse_movies_directors(movies_detail))
+pprint.pprint(analyse_movies_directors(movies_detail))

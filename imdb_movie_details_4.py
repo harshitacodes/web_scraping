@@ -9,6 +9,7 @@ def scrape_movie_details(movie_url):
     soup = BeautifulSoup(page.text,"html.parser")
 
     name_row = soup.find('div',class_ = "title_wrapper").h1.get_text()
+
     movie_name = ' '
     for i in name_row:
         if '(' not in i:
@@ -70,9 +71,9 @@ def scrape_movie_details(movie_url):
 
     return movie_data_dic
   
-url1 = scrapped_movies[1]['url']
+url1 = scrapped_movies[0]['url']
 # scrape_movie_details("")
-# pprint.pprint(scrape_movie_details(url1))
+(scrape_movie_details(url1))
 
 
 

@@ -6,11 +6,10 @@ from os import path
 def scrape_movie_details(movie_url):
 
     random_sleep = random.randint(1,3)
+    print(random_sleep)
 
     id_movie = ''
     for id_s in movie_url[27:]:
-        # print(ids,count)
-        # count+=1
         if '/' not in id_s:
             id_movie += id_s
         else:
@@ -52,7 +51,8 @@ def scrape_movie_details(movie_url):
 
     extra_movie_details = soup.find('div',attrs={"class":"article","id":"titleDetails"})
     lists_of_divs = extra_movie_details.find_all('div')
-    # return (lists_of_divs)
+
+
     for divs in lists_of_divs:
         h4_tags = divs.find_all('h4')
         for h4 in h4_tags:
@@ -105,6 +105,6 @@ def get_movie_list_details(movies):
         movie_list.append(Url)
     return movie_list
 details = get_movie_list_details(scrapped_movies)
-# print(details)
+# print(time.time())
 
 

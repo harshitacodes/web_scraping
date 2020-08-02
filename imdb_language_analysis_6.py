@@ -1,12 +1,11 @@
-from imdb import *
-from imdb_movie_details import *
-from imdb_full_movie_list import *
+from imdb_1 import *
+from imdb_movie_details_4 import *
+from imdb_full_movie_list_5 import *
 
 def analyse_movies_language(movies):
-    scrapped_movies = scrape_top_list()
     movies_detail = get_movie_list_details(scrapped_movies[:10])
     count_lan = {}
-    for lan in movies_detail:
+    for lan in movies:
         lan1= lan['language']
         if 1<len(lan1):
             for i in lan1:
@@ -20,4 +19,4 @@ def analyse_movies_language(movies):
             count_lan[lan1[0]]+=1
     return count_lan
 movies_detail = get_movie_list_details(scrapped_movies[:10])   
-print(analyse_movies_language(movies_detail))
+pprint.pprint(analyse_movies_language(movies_detail))
