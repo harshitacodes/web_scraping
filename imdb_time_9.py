@@ -37,6 +37,14 @@ def scrape_movie_details(movie_url):
         else:
             break
     sub_div = soup.find('div', class_ = "subtext")
+    run_time = sub_div.find('time').get_text().strip()
+    runTime_hours = int(run_time[0]) * 60
+    movie_runtime = 0
+    if 'min' in run_time:
+        runtime_min = int(run_time[3:].strip('min'))  
+        movie_runtime = runTime_hours + runtime_min
+    else:
+        movie_runtime = runTime_hours 
     genre = sub_div.find_all('a')
     genre.pop()
     movie_genre = [i.get_text() for i in genre]
@@ -63,10 +71,6 @@ def scrape_movie_details(movie_url):
             elif 'Country:' in h4:
                 country_tag = divs.find_all('a')
                 movie_country = ''.join([Country.get_text() for Country in country_tag])
-
-            elif 'Runtime:' in h4:
-                runtime = divs.find_all('time')
-                runtime_movie = ''.join([Runtime.get_text() for Runtime in runtime])
 
 
     poster_div_tag = soup.find('div',class_ = "poster").a['href']
