@@ -8,4 +8,4 @@ def get_movie_list_details(movies):
         movie_list.append(Url)
     return (movie_list)
 movie_details = get_movie_list_details(scrape_top_list())
-pprint.pprint(movie_details)
+# pprint.pprint(movie_details)
